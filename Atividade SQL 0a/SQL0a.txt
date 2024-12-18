@@ -1,0 +1,81 @@
+1. Identificação das Superchaves, Chaves Candidatas e Chaves Primárias
+• Funcionários
+Superchaves: {CPF}, {CPF, PrimeiroNome}, {CPF, NomeDoMeio}, {CPF, Sobrenome}, {CPF, DataNascimento}, {CPF, Genero}, etc.
+Chaves Candidatas: {CPF}
+Chave Primária: CPF
+Chaves Estrangeiras: Nenhuma
+
+• Motorista
+Superchaves: {CPF}, {CNH}, {Salario}, {CPF, CNH}, {CPF, Salario}, etc.
+Chaves Candidatas: {CPF}, {CNH}
+Chave Primária: CPF
+Chaves Estrangeiras:
+CPF Supervisor (referencia Funcionarios.CPF)
+CPF Gerente (referencia Departamento.CPFGerente)
+
+• Departamento
+Superchaves: {Codigo}, {Nome}, {NumeroFuncionarios}, {CPFGerente}, etc.
+Chaves Candidatas: {Codigo}
+Chave Primária: Codigo
+Chaves Estrangeiras:
+CPFGerente (referencia Funcionarios.CPF)
+
+• Marca
+Superchaves: {Codigo}, {Nome}
+Chaves Candidatas: {Codigo}
+Chave Primária: Codigo
+Chaves Estrangeiras: Nenhuma
+
+• Modelo
+Superchaves: {Codigo}, {Nome}, {Marca}, {Codigo, Nome}, {Codigo, Marca}, etc.
+Chaves Candidatas: {Codigo}
+Chave Primária: Codigo
+Chaves Estrangeiras:
+Marca (referencia Marca.Codigo)
+
+• Veiculo
+Superchaves: {Placa}, {Renavam}, {AnoModelo}, {AnoFabricacao}, {Modelo}, {Kilometragem}, {Chassi}, etc.
+Chaves Candidatas: {Placa}
+Chave Primária: Placa
+Chaves Estrangeiras:
+Modelo (referencia Modelo.Codigo)
+
+2. Natureza e Tipo de Dados Adequado para Cada Atributo
+
+• Funcionarios
+CPF: CHAR(11)
+PrimeiroNome: VARCHAR(50)
+Sobrenome: VARCHAR(50)
+DataNascimento: DATE
+Genero: CHAR(1)
+
+• Motorista
+CPF: CHAR(11)
+CNH: CHAR(11)
+Salario: DECIMAL(10, 2)
+CPFSupervisor: CHAR(11)
+Departamento: VARCHAR(50)
+
+• Departamento
+Codigo: INT
+Nome: VARCHAR(50)
+NumeroFuncionarios: INT
+CPFGerente: CHAR(11)
+
+• Marca
+Codigo: INT
+Nome: VARCHAR(50)
+
+• Modelo
+Codigo: INT
+Nome: VARCHAR(50)
+Marca: INT
+
+• Veiculo
+Placa: CHAR(7)
+Renavam: CHAR(11)
+AnoModelo: INT
+AnoFabricacao: INT
+Modelo: INT
+Kilometragem: INT
+Chassi: CHAR(17)
